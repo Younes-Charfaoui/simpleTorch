@@ -6,4 +6,10 @@
     <string name="dialog_title">Need Flash.</string>
     <string name="dialog_message">Sorry but this phone does not provide the flash feature to use it, the app will get closed.</string>
     <string name="about_us">About us</string>
+    <string name="name">Name</string>
+    <string name="younes_charfaoui">Younes Charfaoui</string>
+    <string name="e_mail">E-mail</string>
+    <string name="mxcsyounes_gmail_com">mxcsyounes@gmail.com</string>
+    <string name="phone">Phone</string>
+    <string name="_213_655_269_823">+213 655 269 823</string>
 </resources>
