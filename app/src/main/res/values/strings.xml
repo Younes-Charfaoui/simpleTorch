@@ -5,4 +5,5 @@
     <string name="another_app">Another App is using the camera</string>
     <string name="dialog_title">Need Flash.</string>
     <string name="dialog_message">Sorry but this phone does not provide the flash feature to use it, the app will get closed.</string>
+    <string name="about_us">About us</string>
 </resources>

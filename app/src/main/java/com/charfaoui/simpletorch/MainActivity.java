@@ -1,8 +1,12 @@
 package com.charfaoui.simpletorch;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.AnticipateOvershootInterpolator;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,27 +53,45 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.turnLight).setOnClickListener(v -> {
                     if (isOn) {
-                        /**
-                         * if the boolean is true that means that the flash
-                         * is the on state , we need to set the boolean to false
-                         * and turn it off.
+                        /*
+                          if the boolean is true that means that the flash
+                          is the on state , we need to set the boolean to false
+                          and turn it off.
                          */
                         isOn = false;
-                        mImage.setColorFilter(getResources().getColor(R.color.colorAccentTwo));
-                        mImage.animate().rotationBy(90f).setDuration(1000).setInterpolator(new AnticipateOvershootInterpolator());
-                        mText.setText(R.string.off);
                         mTorchManager.turnOff();
+                        mImage.animate().rotationBy(90f)
+                                .setDuration(300)
+                                .setInterpolator(new FastOutSlowInInterpolator())
+                                .setListener(new AnimatorListenerAdapter() {
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        super.onAnimationEnd(animation);
+                                        mImage.setColorFilter(getResources().getColor(R.color.colorAccentTwo));
+                                        mText.setText(R.string.off);
+                                    }
+                                });
+
                     } else {
-                        /**
-                         * if the boolean is false that means that the flash
-                         * is the off state , we need to set the boolean to true
-                         * and turn it on.
+                        /*
+                          if the boolean is false that means that the flash
+                          is the off state , we need to set the boolean to true
+                          and turn it on.
                          */
                         isOn = true;
-                        mImage.animate().rotationBy(90f).setDuration(1000).setInterpolator(new AnticipateOvershootInterpolator());
-                        mImage.setColorFilter(getResources().getColor(R.color.colorAccent));
-                        mText.setText(R.string.on);
                         mTorchManager.turnOn();
+                        mImage.animate().rotationBy(90f)
+                                .setDuration(300)
+                                .setInterpolator(new FastOutSlowInInterpolator())
+                                .setListener(new AnimatorListenerAdapter() {
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        super.onAnimationEnd(animation);
+                                        mImage.setColorFilter(getResources().getColor(R.color.colorAccent));
+                                        mText.setText(R.string.on);
+                                    }
+                                });
+
                     }
                 }
         );
@@ -98,5 +120,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         if (mTorchManager != null) mTorchManager.release();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about_us_menu:
+                
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
