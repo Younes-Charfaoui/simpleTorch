@@ -2,7 +2,7 @@ package com.charfaoui.simpletorch;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
                          */
                         isOn = false;
                         mImage.setColorFilter(getResources().getColor(R.color.colorAccentTwo));
-                        mImage.animate().rotationBy(90f).setDuration(1000).setInterpolator(new AccelerateDecelerateInterpolator());
-                        mImage.animate().rotationBy(90f);
+                        mImage.animate().rotationBy(90f).setDuration(1000).setInterpolator(new AnticipateOvershootInterpolator());
                         mText.setText(R.string.off);
                         mTorchManager.turnOff();
                     } else {
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                          * and turn it on.
                          */
                         isOn = true;
-                        mImage.animate().rotationBy(90f).setDuration(1000).setInterpolator(new AccelerateDecelerateInterpolator());
+                        mImage.animate().rotationBy(90f).setDuration(1000).setInterpolator(new AnticipateOvershootInterpolator());
                         mImage.setColorFilter(getResources().getColor(R.color.colorAccent));
                         mText.setText(R.string.on);
                         mTorchManager.turnOn();

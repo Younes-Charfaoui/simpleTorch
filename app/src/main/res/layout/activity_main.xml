@@ -33,6 +33,7 @@
             android:id="@+id/on_off_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             android:layout_centerInParent="true"
             android:text="@string/off"
             android:textColor="@android:color/white"
