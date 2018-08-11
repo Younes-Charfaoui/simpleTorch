@@ -1,4 +1,4 @@
-package com.charfaoui.nadiatorche;
+package com.charfaoui.simpletorch;
 
 import org.junit.Test;
 

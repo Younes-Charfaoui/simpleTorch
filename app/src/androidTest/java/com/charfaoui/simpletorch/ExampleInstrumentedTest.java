@@ -1,4 +1,4 @@
-package com.charfaoui.nadiatorche;
+package com.charfaoui.simpletorch;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

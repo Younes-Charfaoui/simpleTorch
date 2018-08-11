@@ -1,7 +1,9 @@
-package com.charfaoui.nadiatorche;
+package com.charfaoui.simpletorch;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     // text view to display the state {ON , OFF} for the user.
     private TextView mText;
     private TorchManager mTorchManager;
+    private ImageView mImage;
 
     /**
      * this method is overridden for the purpose of getting
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mText = findViewById(R.id.on_off_text_view);
-
+        mImage = findViewById(R.id.button_image_view);
         //testing if the phone has a flash to use
         if (!TorchManager.isFlashAvailable(this)) {
             AvailabilityDialog dialog = new AvailabilityDialog();
@@ -52,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
                          * and turn it off.
                          */
                         isOn = false;
+                        mImage.setColorFilter(getResources().getColor(R.color.colorAccentTwo));
+                        mImage.animate().rotationBy(90f).setDuration(1000).setInterpolator(new AccelerateDecelerateInterpolator());
+                        mImage.animate().rotationBy(90f);
                         mText.setText(R.string.off);
                         mTorchManager.turnOff();
                     } else {
@@ -61,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                          * and turn it on.
                          */
                         isOn = true;
+                        mImage.animate().rotationBy(90f).setDuration(1000).setInterpolator(new AccelerateDecelerateInterpolator());
+                        mImage.setColorFilter(getResources().getColor(R.color.colorAccent));
                         mText.setText(R.string.on);
                         mTorchManager.turnOn();
                     }

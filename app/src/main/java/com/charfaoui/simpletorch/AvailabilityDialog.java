@@ -1,4 +1,4 @@
-package com.charfaoui.nadiatorche;
+package com.charfaoui.simpletorch;
 
 import android.app.Dialog;
 import android.os.Bundle;
