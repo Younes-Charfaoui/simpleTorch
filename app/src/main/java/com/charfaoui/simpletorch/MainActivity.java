@@ -65,10 +65,17 @@ public class MainActivity extends AppCompatActivity {
                                 .setInterpolator(new FastOutSlowInInterpolator())
                                 .setListener(new AnimatorListenerAdapter() {
                                     @Override
+                                    public void onAnimationStart(Animator animation) {
+                                        super.onAnimationStart(animation);
+                                        findViewById(R.id.turnLight).setEnabled(false);
+                                    }
+
+                                    @Override
                                     public void onAnimationEnd(Animator animation) {
                                         super.onAnimationEnd(animation);
                                         mImage.setColorFilter(getResources().getColor(R.color.colorAccentTwo));
                                         mText.setText(R.string.off);
+                                        findViewById(R.id.turnLight).setEnabled(true);
                                     }
                                 });
 
@@ -85,10 +92,17 @@ public class MainActivity extends AppCompatActivity {
                                 .setInterpolator(new FastOutSlowInInterpolator())
                                 .setListener(new AnimatorListenerAdapter() {
                                     @Override
+                                    public void onAnimationStart(Animator animation) {
+                                        super.onAnimationStart(animation);
+                                        findViewById(R.id.turnLight).setEnabled(false);
+                                    }
+
+                                    @Override
                                     public void onAnimationEnd(Animator animation) {
                                         super.onAnimationEnd(animation);
                                         mImage.setColorFilter(getResources().getColor(R.color.colorAccent));
                                         mText.setText(R.string.on);
+                                        findViewById(R.id.turnLight).setEnabled(true);
                                     }
                                 });
 
@@ -133,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.about_us_menu:
-                
                 break;
         }
         return super.onOptionsItemSelected(item);
