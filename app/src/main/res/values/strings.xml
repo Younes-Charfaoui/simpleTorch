@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Torch</string>
+    <string name="app_name">Simple Torch</string>
     <string name="off">Off</string>
     <string name="on">On</string>
     <string name="another_app">Another App is using the camera</string>
