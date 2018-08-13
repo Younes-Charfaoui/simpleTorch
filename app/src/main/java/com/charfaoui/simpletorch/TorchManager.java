@@ -102,7 +102,6 @@ public class TorchManager {
             try {
                 mCamera = Camera.open();
             } catch (Exception e) {
-                Toast.makeText(mContext, R.string.another_app, Toast.LENGTH_SHORT).show();
             }
         }
     }
