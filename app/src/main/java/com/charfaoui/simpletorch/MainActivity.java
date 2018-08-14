@@ -11,6 +11,10 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 /**
  * @definition this activity will show to the user a view to tap on with
  * the String of {ON , OFF} , as the user interact with this view , this
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mText;
     private TorchManager mTorchManager;
     private ImageView mImage;
+    private AdView mAdView;
+
 
     /**
      * this method is overridden for the purpose of getting
@@ -44,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
 
         mText = findViewById(R.id.on_off_text_view);
         mImage = findViewById(R.id.button_image_view);
+
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+
+        mAdView = findViewById(R.id.addView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         //testing if the phone has a flash to use
         if (!TorchManager.isFlashAvailable(this)) {
             AvailabilityDialog dialog = new AvailabilityDialog();
@@ -136,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         if (mTorchManager != null) mTorchManager.release();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
