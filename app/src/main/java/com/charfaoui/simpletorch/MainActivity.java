@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView mText;
     private TorchManager mTorchManager;
     private ImageView mImage;
-    private AdView mAdView;
 
 
     /**
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
 
-        mAdView = findViewById(R.id.addView);
+        AdView mAdView = findViewById(R.id.addView);
 
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

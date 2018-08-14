@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="40dp"
+    android:padding="32dp"
     tools:context="com.charfaoui.simpletorch.AboutActivity">
+
+
 
     <ImageView
         android:layout_width="200dp"
@@ -63,4 +66,13 @@
         android:layout_marginStart="8dp"
         android:text="@string/_213_655_269_823"
         android:textColor="@color/colorPrimaryDark" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/addViewAbout"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner_ad_unit_id" />
 </LinearLayout>
